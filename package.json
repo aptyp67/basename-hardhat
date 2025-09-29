@@ -1,0 +1,25 @@
+{
+  "name": "basename-hardhat",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "hardhat compile",
+    "clean": "hardhat clean",
+    "test": "hardhat test",
+    "deploy:base": "hardhat run scripts/deploy.ts --network base",
+    "deploy:baseSepolia": "hardhat run scripts/deploy.ts --network baseSepolia",
+    "verify:watchlist:baseSepolia": "hardhat verify --network baseSepolia $WATCHLIST_ADDRESS",
+    "verify:register:baseSepolia": "hardhat verify --network baseSepolia $REGISTER_WITH_FEE_ADDRESS $REGISTRAR_ADDRESS $FEE_RECIPIENT $FEE_BPS",
+    "verify:watchlist:base": "hardhat verify --network base $WATCHLIST_ADDRESS",
+    "verify:register:base": "hardhat verify --network base $REGISTER_WITH_FEE_ADDRESS $REGISTRAR_ADDRESS $FEE_RECIPIENT $FEE_BPS"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}
