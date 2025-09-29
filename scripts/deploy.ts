@@ -1,11 +1,17 @@
-import { ethers } from "hardhat";
+import hardhat from "hardhat";
+
+const { ethers } = hardhat;
 
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deployer:", await deployer.getAddress());
 
+  // Manually track nonces to avoid RPCs that ignore pending transactions.
+  let nextNonce = await deployer.getNonce();
+
   const Watchlist = await ethers.getContractFactory("Watchlist");
-  const watchlist = await Watchlist.deploy();
+  const watchlist = await Watchlist.deploy({ nonce: nextNonce });
+  nextNonce += 1;
   await watchlist.waitForDeployment();
   console.log("Watchlist:", await watchlist.getAddress());
 
@@ -15,7 +21,13 @@ async function main() {
   if (!registrar || !feeRecipient) throw new Error("Set REGISTRAR_ADDRESS / FEE_RECIPIENT");
 
   const RegisterWithFee = await ethers.getContractFactory("RegisterWithFee");
-  const register = await RegisterWithFee.deploy(registrar, feeRecipient, feeBps);
+  const register = await RegisterWithFee.deploy(
+    registrar,
+    feeRecipient,
+    feeBps,
+    { nonce: nextNonce }
+  );
+  nextNonce += 1;
   await register.waitForDeployment();
   console.log("RegisterWithFee:", await register.getAddress());
 }

@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "es2020",
-    "moduleResolution": "bundler",
+    "module": "commonjs",
+    "moduleResolution": "node",
     "strict": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -11,7 +11,7 @@
     "skipLibCheck": true
   },
   "include": [
-    "./hardhat.config.ts",
+    "./hardhat.config.cts",
     "./scripts",
     "./test",
     "./typechain-types"
