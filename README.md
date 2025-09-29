@@ -29,7 +29,8 @@ npm run build
 
 4) Deploy (Base Sepolia first)
 ```bash
-npm run deploy:baseSepolia
+npm run deploy:watchlist:baseSepolia
+npm run deploy:register:baseSepolia
 ```
 
 5) Verify on BaseScan
@@ -46,7 +47,8 @@ npm run verify:register:baseSepolia
 
 6) Mainnet (optional)
 ```bash
-npm run deploy:base
+npm run deploy:watchlist:base
+npm run deploy:register:base
 npm run verify:watchlist:base
 npm run verify:register:base
 ```
