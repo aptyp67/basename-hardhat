@@ -1,8 +1,8 @@
-# Basename Hardhat Repo (Watchlist + RegisterWithFee)
+# Basename Hardhat Repo (Watchlist + RegisterWithFeeV2)
 
 Two contracts:
 - `Watchlist.sol` — on-chain watch/unwatch with events.
-- `RegisterWithFee.sol` — wrapper over Basename Registrar (collects fee, forwards value).
+- `RegisterWithFeeV2.sol` — wrapper over Basename Registrar (collects fee, forwards value).
 
 ## Quickstart
 
@@ -36,7 +36,7 @@ npm run deploy:register:baseSepolia
 5) Verify on BaseScan
 ```bash
 # replace with addresses printed on deploy
-WATCHLIST_ADDRESS=0x... REGISTER_WITH_FEE_ADDRESS=0x...
+WATCHLIST_ADDRESS=0x... REGISTER_WITH_FEE_ADDRESS=0x... # RegisterWithFeeV2
 REGISTRAR_ADDRESS=0x4cCb0BB02FCABA27e82a56646E81d8c5bC4119a5
 FEE_RECIPIENT=0xYourWallet
 FEE_BPS=10

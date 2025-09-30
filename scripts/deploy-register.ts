@@ -13,10 +13,10 @@ async function main() {
   if (!registrar) throw new Error("Set REGISTRAR_ADDRESS in your environment");
   if (!feeRecipient) throw new Error("Set FEE_RECIPIENT in your environment");
 
-  const RegisterWithFee = await ethers.getContractFactory("RegisterWithFee");
-  const register = await RegisterWithFee.deploy(registrar, feeRecipient, feeBps);
+  const RegisterWithFeeV2 = await ethers.getContractFactory("RegisterWithFeeV2");
+  const register = await RegisterWithFeeV2.deploy(registrar, feeRecipient, feeBps);
   await register.waitForDeployment();
-  console.log("RegisterWithFee:", await register.getAddress());
+  console.log("RegisterWithFeeV2:", await register.getAddress());
 }
 
 main().catch((error) => {
