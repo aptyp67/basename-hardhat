@@ -44,8 +44,8 @@ contract RegisterWithFeeV2 is NonReentrant {
         feeBps = _feeBps;
     }
 
-    function computeFee(uint256 totalValue) public view returns (uint256) {
-        return (totalValue * feeBps) / 10_000;
+    function computeFee(uint256 registrarValue) public view returns (uint256) {
+        return (registrarValue * feeBps) / 10_000;
     }
 
     function registerWithFee(
@@ -53,7 +53,7 @@ contract RegisterWithFeeV2 is NonReentrant {
         uint256 registrarValue
     ) external payable nonReentrant {
         if (req.duration == 0 || registrarValue == 0) revert BadParams();
-        uint256 fee = computeFee(msg.value);
+        uint256 fee = computeFee(registrarValue);
         if (msg.value != registrarValue + fee) revert BadMsgValue();
 
         emit RegisterIntent(msg.sender, req.name, req.owner, req.duration, registrarValue, fee);
@@ -73,7 +73,7 @@ contract RegisterWithFeeV2 is NonReentrant {
         uint256 registrarValue
     ) external payable nonReentrant {
         if (duration == 0 || registrarValue == 0) revert BadParams();
-        uint256 fee = computeFee(msg.value);
+        uint256 fee = computeFee(registrarValue);
         if (msg.value != registrarValue + fee) revert BadMsgValue();
 
         emit RegisterIntent(msg.sender, name, owner, duration, registrarValue, fee);
